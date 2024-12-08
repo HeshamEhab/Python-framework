@@ -8,7 +8,7 @@ The system contains the following main folders:
 
 ### **`ins_apps`**
 This folder contains the system's applications. Each app encapsulates a specific functionality or feature of the system.  
-[Learn more about `ins_apps` and its usage.](/app)
+[Learn more about `ins_apps` and its usage.](/Python-framework/app)
 
 ### **`ins_wdgts`**
 This folder contains the system's widgets, reusable components designed to enhance user interface and functionality.  

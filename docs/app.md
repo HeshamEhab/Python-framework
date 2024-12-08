@@ -21,7 +21,7 @@ Inside the app folder, create a Python file with the same name as the folder, fo
 You can enhance your app by adding more files:
 
 - **Additional Python Files**: If needed, you can create more Python files for additional functionality.
-- **Properties File**: A JSON file called `properties.json` can be created an you can know more about json properties file from [here](properties_file).
+- **Properties File**: A JSON file called `properties.json` can be created an you can know more about json properties file from [here](/Python-framework/menu_item).
 - **JavaScript and CSS Files**: If your app needs JavaScript or CSS, you will need to create a new folder inside the **`ins_web`** directory with the same name as your app. Inside this folder, you can create:
   - `script.js` for JavaScript code.
   - `style.css` for custom styles.
