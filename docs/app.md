@@ -21,14 +21,34 @@ Inside the app folder, create a Python file with the same name as the folder, fo
 You can enhance your app by adding more files:
 
 - **Additional Python Files**: If needed, you can create more Python files for additional functionality.
-- **Properties File**: A JSON file called `properties.json` can be created an you can know more about json properties file from [here](properties_file).
-- **JavaScript and CSS Files**: If your app needs JavaScript or CSS, you will need to create a new folder inside the **`ins_web`** directory with the same name as your app. Inside this folder, you can create:
-  - `script.js` for JavaScript code.
-  - `style.css` for custom styles.
+ **Properties**: Create a `properties.json` file to define app options. Example:
+  ```json
+  {
+      "options": [{
+          "_type": "input",
+          "title": "Content",
+          "name": "id"
+      }]
+  }
+  ```
+  - When creating the app in the admin portal, these fields will appear under the "Properties" section.
+  - Use these values in code: `self.app._options["id"]`.
+
+
+- **JS and CSS**:
+  - Navigate to the `ins_web` folder in the same area.
+  - Create a folder with the same name as your app folder (e.g., `app_myapp`).
+  - Add files like `script.js` and `style.css`.
+  - Include them in your Python file:
+    ```python
+    self.app._include("script.js")
+    self.app._include("style.css")
+    ```
+
 
 ### 4. Make Your App Viewable in the Portal
 
-To make your app accessible and viewable in the portal, you need to follow the instructions provided in this [link](#).
+To make your app accessible and viewable in the portal, you need to follow the instructions provided in this [link](/menu_item).
 
 ---
 
