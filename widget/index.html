@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>App - Insya Python Framework</title>
+        <title>Widget - Insya Python Framework</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -41,10 +41,10 @@
                                 <a href="../structure/" class="nav-link">Architecture</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">App</a>
+                                <a href="../app/" class="nav-link">App</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../widget/" class="nav-link">Widget</a>
+                                <a href="./" class="nav-link active" aria-current="page">Widget</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../menu_item/" class="nav-link">Menu Item</a>
@@ -58,12 +58,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../structure/" class="nav-link">
+                                <a rel="prev" href="../app/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../widget/" class="nav-link">
+                                <a rel="next" href="../menu_item/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -85,9 +85,22 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#creating-an-app-in-the-system" class="nav-link">Creating an App in the System</a>
+            <li class="nav-item" data-bs-level="1"><a href="#what-is-a-widget" class="nav-link">What is a Widget?</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#steps-to-create-an-app" class="nav-link">Steps to Create an App</a>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#how-to-create-a-widget" class="nav-link">How to Create a Widget</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-1-add-static-content-to-a-widget" class="nav-link">Scenario 1: Add Static Content to a Widget</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-2-add-a-new-widget-from-folders" class="nav-link">Scenario 2: Add a New Widget from Folders</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#notes" class="nav-link">Notes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -98,31 +111,88 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="creating-an-app-in-the-system">Creating an App in the System</h1>
-<p>An <strong>App</strong> is a part of the system that can be used and called from any area. Below are the steps to create an app in the system.</p>
-<h2 id="steps-to-create-an-app">Steps to Create an App</h2>
-<h3 id="1-create-the-app-folder">1. Create the App Folder</h3>
-<p>First, create a folder inside the <strong><code>ins_apps</code></strong> directory. The folder name should represent your app and be written with prefex <code>app</code>.
-<strong>Ex</strong>: app_test</p>
-<h3 id="2-create-the-python-file">2. Create the Python File</h3>
-<p>Inside the app folder, create a Python file with the same name as the folder, followed by the <code>.py</code> extension. This file is the minimum requirement to create an app, and it will be enough for the app to work.</p>
+<h1 id="what-is-a-widget">What is a Widget?</h1>
+<p>a <strong>widget</strong> is a reusable <strong>UI (User Interface)</strong> component or module that performs a specific function or displays a specific part of the content on a website or application. Widgets are often used to simplify the structure of code and allow developers to reuse them in different parts of a project.</p>
+<p>Think of a widget as a small, self-contained building block for your website. For example:
+- <strong>Header Widget:</strong> Displays the header of your site, including a logo, navigation menu, etc.
+- <strong>Footer Widget:</strong> Displays the footer of your site, including copyright information and links.
+- <strong>Sidebar Widget:</strong> Displays additional information, such as related articles or ads.</p>
+<p>Widgets help break down a website into smaller parts, making it easier to maintain, update, and reuse code.</p>
+<h1 id="how-to-create-a-widget">How to Create a Widget</h1>
+<p>Widgets in this system can be created in two ways: by adding static content or by creating new widgets from folders. Follow the steps below based on your needs.</p>
+<h2 id="scenario-1-add-static-content-to-a-widget">Scenario 1: Add Static Content to a Widget</h2>
+<h3 id="step-1-add-content">Step 1: Add Content</h3>
+<ol>
+<li>Go to the <strong>Admin Panel</strong>.</li>
+<li>From the side panel, select <strong>Content</strong> &gt; <strong>Content Menu Item</strong>.</li>
+<li>A list of all content will appear. Click <strong>Add</strong> to create new content.</li>
+<li>Fill in the following fields:</li>
+<li><strong>Content Title</strong>: A title for internal use (not visible in the content body).</li>
+<li><strong>Content</strong>: Add simple text or HTML.</li>
+<li>Click <strong>Save</strong> and note the <strong>ID</strong> shown in the URL (you will need this later).</li>
+</ol>
+<h3 id="step-2-add-content-to-a-widget">Step 2: Add Content to a Widget</h3>
+<ol>
+<li>From the side panel, select <strong>Settings</strong> &gt; <strong>Widgets</strong>.</li>
+<li>A list of existing widgets will appear. Click <strong>Add</strong> to create a new widget.</li>
+<li>Fill in the following fields:</li>
+<li><strong>Widget Title</strong>: A name for internal use (visible to users).</li>
+<li><strong>Source Section</strong>: Choose the area (e.g., Home, Admin) where the widget will be used.</li>
+<li><strong>Content ID</strong>: After selecting the area and "Content," enter the ID of the content you created.</li>
+<li><strong>Position</strong>: Specify the widget's position on the screen (e.g., Header, Footer).</li>
+<li><strong>Class</strong>: Optionally, add framework classes (e.g., <code>ins-col ins-card ins-padding ins-font</code>).</li>
+<li>Click <strong>Save</strong> to create the widget.</li>
+</ol>
+<h2 id="scenario-2-add-a-new-widget-from-folders">Scenario 2: Add a New Widget from Folders</h2>
+<h3 id="step-1-create-the-widget-folder-and-file">Step 1: Create the Widget Folder and File</h3>
+<ol>
+<li>Decide the area for the widget (e.g., Home, Admin).</li>
+<li>In the selected area's folder, navigate to <code>ins_wdgts</code>.</li>
+<li>Create a new folder named <code>wdg_&lt;widget_name&gt;</code> (e.g., <code>wdg_mywidget</code>).</li>
+<li>Inside this folder, create a Python file with the same name as the folder, using camelCase (e.g., <code>myWidget.py</code>).</li>
+</ol>
+<h3 id="step-2-add-additional-files-and-properties-optional">Step 2: Add Additional Files and Properties (Optional)</h3>
 <ul>
-<li>The class name in the Python file should be the same as the folder and file name, written in <strong>CamelCase</strong> (without underscores) in previpus example if app name is <code>app_test</code> the class name should be <code>AppTest</code>.</li>
-<li>This Python file will initialize the app and make it functional.</li>
+<li><strong>Properties</strong>: Create a <code>properties.json</code> file to define widget options. Example:
+  <code>json
+  {
+      "options": [{
+          "_type": "input",
+          "title": "Content",
+          "name": "id"
+      }]
+  }</code></li>
+<li>When creating the widget in the admin portal, these fields will appear under the "Properties" section.</li>
+<li>Use these values in code: <code>self.widget._options["id"]</code>.</li>
+<li><strong>JS and CSS</strong>:</li>
+<li>Navigate to the <code>ins_web</code> folder in the same area.</li>
+<li>Create a folder with the same name as your widget folder (e.g., <code>wdg_mywidget</code>).</li>
+<li>Add files like <code>script.js</code> and <code>style.css</code>.</li>
+<li>Include them in your Python file:
+    <code>python
+    self.widget._include("script.js")
+    self.widget._include("style.css")</code></li>
 </ul>
-<h3 id="3-additional-files-optional">3. Additional Files (Optional)</h3>
-<p>You can enhance your app by adding more files:</p>
+<h3 id="step-3-add-the-widget-in-the-admin-portal">Step 3: Add the Widget in the Admin Portal</h3>
+<ol>
+<li>From the side panel, select <strong>Settings</strong> &gt; <strong>Widgets</strong>.</li>
+<li>A list of existing widgets will appear. Click <strong>Add</strong> to create a new widget.</li>
+<li>Fill in the following fields:</li>
+<li><strong>Widget Title</strong>: A name for internal use (visible to users).</li>
+<li><strong>Source Section</strong>: Choose the area where the widget is located.</li>
+<li><strong>Widget</strong>: Select the newly created widget.</li>
+<li><strong>Properties</strong>: If properties were defined in <code>properties.json</code>, their fields will appear here.</li>
+<li><strong>Position</strong>: Specify the widget's position on the screen (e.g., Header, Footer).</li>
+<li><strong>Class</strong>: Optionally, add framework classes (e.g., <code>ins-col ins-card ins-padding ins-font</code>).</li>
+<li>Click <strong>Save</strong> to add the widget.</li>
+</ol>
+<h2 id="notes">Notes</h2>
 <ul>
-<li><strong>Additional Python Files</strong>: If needed, you can create more Python files for additional functionality.</li>
-<li><strong>Properties File</strong>: A JSON file called <code>properties.json</code> can be created an you can know more about json properties file from <a href="/Python-framework/menu_item">here</a>.</li>
-<li><strong>JavaScript and CSS Files</strong>: If your app needs JavaScript or CSS, you will need to create a new folder inside the <strong><code>ins_web</code></strong> directory with the same name as your app. Inside this folder, you can create:</li>
-<li><code>script.js</code> for JavaScript code.</li>
-<li><code>style.css</code> for custom styles.</li>
+<li>Use meaningful titles for both content and widgets to make management easier.</li>
+<li>Always follow the naming conventions for folders, files, and classes to ensure the system recognizes your widget.</li>
+<li>Test the widget in its intended position to verify its appearance and functionality.</li>
 </ul>
-<h3 id="4-make-your-app-viewable-in-the-portal">4. Make Your App Viewable in the Portal</h3>
-<p>To make your app accessible and viewable in the portal, you need to follow the instructions provided in this <a href="#">link</a>.</p>
-<hr />
-<p>This simple structure is all you need to create an app in the system. You can always add more files as required for additional functionality.</p></div>
+<p>By following these steps, you can easily create and manage widgets in the system!</p></div>
             </div>
         </div>
 
