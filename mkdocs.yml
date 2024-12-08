@@ -4,3 +4,5 @@ nav:
   - Home: index.md
   - Architecture: structure.md
   - App: app.md
+  - Widget: widget.md
+  - Menu Item: menu_item.md
