@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>CRUD - Insya Python Framework</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Insya Python Framework</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../structure/" class="nav-link">Architecture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../app/" class="nav-link">App</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../widget/" class="nav-link">Widget</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../menu_item/" class="nav-link">Menu Item</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">CRUD</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../menu_item/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#crud-system-documentation" class="nav-link">CRUD System Documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="crud-system-documentation">CRUD System Documentation</h2>
+<h3 id="what-is-a-crud-system">What is a CRUD System?</h3>
+<p>A CRUD system provides the foundational functionalities of <strong>Create</strong>, <strong>Read</strong>, <strong>Update</strong>, and <strong>Delete</strong> for managing data in an application. It simplifies the interaction with the database by automatically generating user interfaces and operations for these functionalities.</p>
+<p>In this framework, enabling a CRUD system for your application allows you to:
+- Display a list of records.
+- Add new records.
+- Edit existing records.
+- Delete or trash records.
+- Filter records based on specific criteria.</p>
+<h3 id="activating-the-crud-system">Activating the CRUD System</h3>
+<p>To activate the CRUD system for your app, add the following code in the <code>out</code> method of your Python file:</p>
+<pre><code class="language-python">return self.ins._apps._crud(properties=self.app._properties)
+</code></pre>
+<p>This code links the app to the <code>properties.json</code> file, which defines the fields, list options, and filters for your CRUD UI.</p>
+<p>Once activated, your app will include:
+- A list of items.
+- Add, Edit, and Delete buttons.
+- Filter options.</p>
+<h3 id="configuring-crud-options-in-propertiesjson">Configuring CRUD Options in <code>properties.json</code></h3>
+<p>You can control the fields displayed in the list, form, and filters using the <code>properties.json</code> file.</p>
+<h4 id="1-define-the-table">1. Define the Table</h4>
+<p>Specify the table the CRUD system will interact with using the <code>table</code> key:</p>
+<pre><code class="language-json">&quot;table&quot;: &quot;kit_menu&quot;
+</code></pre>
+<p>This table will be used for fetching, adding, and updating data.</p>
+<h4 id="2-list-options-list_data">2. List Options (<code>list_data</code>)</h4>
+<p>Define the fields to display in the list view under the <code>list_data</code> key:</p>
+<pre><code class="language-json">&quot;list_data&quot;: [
+    {
+        &quot;name&quot;: &quot;title&quot;,
+        &quot;title&quot;: &quot;My Title&quot;,
+        &quot;view&quot;: &quot;text&quot;,
+        &quot;class&quot;: &quot;ins-col-grow&quot;
+    },
+    {
+        &quot;name&quot;: &quot;kit_disabled&quot;,
+        &quot;title&quot;: &quot;Disabled&quot;,
+        &quot;view&quot;: &quot;text&quot;,
+        &quot;class&quot;: &quot;ins-col-2&quot;
+    }
+]
+</code></pre>
+<ul>
+<li><strong><code>name</code></strong>: Field name in the database.</li>
+<li><strong><code>title</code></strong>: Display title.</li>
+<li><strong><code>view</code></strong>: Field type for display (e.g., text).</li>
+<li><strong><code>class</code></strong>: CSS classes for styling.</li>
+</ul>
+<h4 id="3-form-options-form_data">3. Form Options (<code>form_data</code>)</h4>
+<p>Define the fields to include in the form view under the <code>form_data</code> key:</p>
+<pre><code class="language-json">&quot;form_data&quot;: [
+    {
+        &quot;name&quot;: &quot;title&quot;,
+        &quot;title&quot;: &quot;Title *&quot;,
+        &quot;_type&quot;: &quot;input&quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;required&quot;: &quot;true&quot;,
+        &quot;pclass&quot;: &quot;ins-col-6&quot;
+    },
+    {
+        &quot;name&quot;: &quot;kit_disabled&quot;,
+        &quot;_type&quot;: &quot;input&quot;,
+        &quot;type&quot;: &quot;bool&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;pclass&quot;: &quot;ins-col-3&quot;
+    }
+]
+</code></pre>
+<ul>
+<li><strong><code>_type</code></strong>: Input type (e.g., input, select).</li>
+<li><strong><code>type</code></strong>: HTML input type (e.g., text, bool).</li>
+<li><strong><code>required</code></strong>: Marks the field as mandatory.</li>
+<li><strong><code>pclass</code></strong>: CSS classes for layout.</li>
+</ul>
+<h4 id="4-filter-options-list_filter">4. Filter Options (<code>list_filter</code>)</h4>
+<p>Define the fields for filtering records under the <code>list_filter</code> key:</p>
+<pre><code class="language-json">&quot;list_filter&quot;: [
+    {
+        &quot;name&quot;: &quot;title&quot;,
+        &quot;title&quot;: &quot;Menu Title *&quot;,
+        &quot;_type&quot;: &quot;input&quot;,
+        &quot;_info&quot;: &quot;Search in &lt;b&gt;Title&lt;/b&gt; by &lt;b&gt;@(value)&lt;/b&gt;&quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;main&quot;: true,
+        &quot;required&quot;: &quot;true&quot;,
+        &quot;pclass&quot;: &quot;ins-col-12&quot;
+    }
+]
+</code></pre>
+<ul>
+<li><strong><code>_info</code></strong>: Custom search information text.</li>
+<li><strong><code>main</code></strong>: Marks the field as a primary filter.</li>
+</ul>
+<h3 id="configuring-crud-options-dynamically">Configuring CRUD Options Dynamically</h3>
+<p>Instead of using <code>properties.json</code>, you can define CRUD options dynamically in your Python code using the CRUD library.</p>
+<ol>
+<li>
+<p>Import CRUD operations:
+   <code>python
+   ops = self.ins._apps._crud_ops</code></p>
+</li>
+<li>
+<p>Set CRUD options:</p>
+</li>
+<li><strong>List fields</strong>:
+     <code>python
+     ops._list_data = [
+         {
+             "name": "title",
+             "title": "My Title",
+             "view": "text",
+             "class": "ins-col-9"
+         },
+         {
+             "name": "content",
+             "title": "Content",
+             "_view": "limit",
+             "limit_ops": "25",
+             "class": "ins-col-2"
+         }
+     ]</code></li>
+<li><strong>Form fields</strong>:
+     <code>python
+     ops._form_data = [
+         {
+             "name": "title",
+             "title": "Title",
+             "_type": "input",
+             "type": "text",
+             "required": "true",
+             "pclass": "ins-col-6"
+         }
+     ]</code></li>
+<li><strong>Filter fields</strong>:
+     <code>python
+     ops._list_filter = [
+         {
+             "name": "title",
+             "title": "Filter Title",
+             "_type": "input",
+             "type": "text",
+             "main": true
+         }
+     ]</code></li>
+<li>
+<p><strong>Database table</strong>:
+     <code>python
+     ops._table = "kit_menu"</code></p>
+</li>
+<li>
+<p>Return the CRUD system:
+   <code>python
+   return self.ins._apps._crud(ops)</code></p>
+</li>
+</ol>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>Use meaningful field names and titles for clarity.</li>
+<li>Test all CRUD functionalities to ensure the desired behavior.</li>
+<li>Combine JSON configuration and dynamic code as needed for flexibility.</li>
+</ul>
+<p>One major advantage of using a JSON file to configure CRUD options is the ability to make changes without redeploying the entire project. This saves time and effort, especially in large or live applications, because:</p>
+<ul>
+<li><strong>Immediate Updates</strong>: Changes to the JSON file take effect as soon as the file is saved. There is no downtime for redeployment.</li>
+<li><strong>Ease of Maintenance</strong>: JSON files are straightforward and human-readable, making them ideal for quick edits or adding new configurations.</li>
+<li><strong>Flexibility</strong>: Multiple team members can modify different parts of the configuration without affecting the core application code.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
