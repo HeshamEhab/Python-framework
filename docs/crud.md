@@ -108,7 +108,7 @@ Set up filters to search or sort data:
 ]
 ```
 - **`_info`**: Custom search information text.
-- **`_info`**: The label to display.
+- **`main`**: By enabling this field, the filter will appear on the main page (at the top of the list page).
 
 ---
 
