@@ -6,3 +6,4 @@ nav:
   - App: app.md
   - Widget: widget.md
   - Menu Item: menu_item.md
+  - CRUD: crud.md
