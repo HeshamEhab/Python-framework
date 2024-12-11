@@ -88,7 +88,27 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#crud-system-documentation" class="nav-link">CRUD System Documentation</a>
+            <li class="nav-item" data-bs-level="2"><a href="#what-is-a-crud-system" class="nav-link">What is a CRUD System?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#how-to-enable-crud" class="nav-link">How to Enable CRUD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#customizing-crud-with-propertiesjson" class="nav-link">Customizing CRUD with properties.json</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#dynamic-crud-setup-in-python" class="nav-link">Dynamic CRUD Setup in Python</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#why-use-propertiesjson" class="nav-link">Why Use properties.json?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -97,173 +117,138 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="crud-system-documentation">CRUD System Documentation</h2>
-<h3 id="what-is-a-crud-system">What is a CRUD System?</h3>
-<p>A CRUD system provides the foundational functionalities of <strong>Create</strong>, <strong>Read</strong>, <strong>Update</strong>, and <strong>Delete</strong> for managing data in an application. It simplifies the interaction with the database by automatically generating user interfaces and operations for these functionalities.</p>
-<p>In this framework, enabling a CRUD system for your application allows you to:
-- Display a list of records.
-- Add new records.
-- Edit existing records.
-- Delete or trash records.
-- Filter records based on specific criteria.</p>
-<h3 id="activating-the-crud-system">Activating the CRUD System</h3>
-<p>To activate the CRUD system for your app, add the following code in the <code>out</code> method of your Python file:</p>
+<h2 id="what-is-a-crud-system">What is a CRUD System?</h2>
+<p>A CRUD system allows you to manage data in your app with four basic functions:
+- <strong>Create</strong>: Add new records.
+- <strong>Read</strong>: View existing records.
+- <strong>Update</strong>: Edit records.
+- <strong>Delete</strong>: Remove records.</p>
+<h3 id="why-use-crud">Why Use CRUD?</h3>
+<p>It makes database tasks easy by creating a user-friendly interface for these functions.</p>
+<p>With CRUD, you can:
+- Show a list of data.
+- Add new items.
+- Edit or delete items.
+- Filter data to find what you need.</p>
+<hr />
+<h2 id="how-to-enable-crud">How to Enable CRUD</h2>
+<h3 id="step-1-add-the-code">Step 1: Add the Code</h3>
+<p>To enable CRUD in your app, add this line to the <code>out</code> method of your Python file:</p>
 <pre><code class="language-python">return self.ins._apps._crud(properties=self.app._properties)
 </code></pre>
-<p>This code links the app to the <code>properties.json</code> file, which defines the fields, list options, and filters for your CRUD UI.</p>
-<p>Once activated, your app will include:
+<h3 id="step-2-connect-to-propertiesjson">Step 2: Connect to <code>properties.json</code></h3>
+<p>This code links your app to a file called <code>properties.json</code>. This file controls how your data is displayed, edited, and filtered.</p>
+<h3 id="what-happens-next">What Happens Next?</h3>
+<p>Your app will now have:
 - A list of items.
-- Add, Edit, and Delete buttons.
-- Filter options.</p>
-<h3 id="configuring-crud-options-in-propertiesjson">Configuring CRUD Options in <code>properties.json</code></h3>
-<p>You can control the fields displayed in the list, form, and filters using the <code>properties.json</code> file.</p>
-<h4 id="1-define-the-table">1. Define the Table</h4>
-<p>Specify the table the CRUD system will interact with using the <code>table</code> key:</p>
+- Buttons to add, edit, or delete items.
+- Filters to search and sort items.</p>
+<hr />
+<h2 id="customizing-crud-with-propertiesjson">Customizing CRUD with <code>properties.json</code></h2>
+<h3 id="what-is-propertiesjson">What is <code>properties.json</code>?</h3>
+<p>This file lets you customize how your CRUD system works. You can decide:
+- What data to show in the list.
+- What fields to include in forms.
+- How to filter the data.</p>
+<h3 id="key-parts-of-propertiesjson">Key Parts of <code>properties.json</code></h3>
+<h4 id="1-choose-a-table">1. Choose a Table</h4>
+<p>Tell the CRUD system which database table to use:</p>
 <pre><code class="language-json">&quot;table&quot;: &quot;kit_menu&quot;
 </code></pre>
-<p>This table will be used for fetching, adding, and updating data.</p>
-<h4 id="2-list-options-list_data">2. List Options (<code>list_data</code>)</h4>
-<p>Define the fields to display in the list view under the <code>list_data</code> key:</p>
+<h4 id="2-customize-the-list-view">2. Customize the List View</h4>
+<p>Decide which fields to show in the list:</p>
 <pre><code class="language-json">&quot;list_data&quot;: [
     {
         &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;My Title&quot;,
+        &quot;title&quot;: &quot;Title&quot;,
         &quot;view&quot;: &quot;text&quot;,
         &quot;class&quot;: &quot;ins-col-grow&quot;
     },
     {
-        &quot;name&quot;: &quot;kit_disabled&quot;,
-        &quot;title&quot;: &quot;Disabled&quot;,
+        &quot;name&quot;: &quot;status&quot;,
+        &quot;title&quot;: &quot;Status&quot;,
         &quot;view&quot;: &quot;text&quot;,
         &quot;class&quot;: &quot;ins-col-2&quot;
     }
 ]
 </code></pre>
 <ul>
-<li><strong><code>name</code></strong>: Field name in the database.</li>
-<li><strong><code>title</code></strong>: Display title.</li>
-<li><strong><code>view</code></strong>: Field type for display (e.g., text).</li>
-<li><strong><code>class</code></strong>: CSS classes for styling.</li>
+<li><strong><code>name</code></strong>: The database field name.</li>
+<li><strong><code>title</code></strong>: The label to display.</li>
+<li><strong><code>view</code></strong>: How the field looks (e.g., text).</li>
+<li><strong><code>class</code></strong>: CSS styling for layout.</li>
 </ul>
-<h4 id="3-form-options-form_data">3. Form Options (<code>form_data</code>)</h4>
-<p>Define the fields to include in the form view under the <code>form_data</code> key:</p>
+<h4 id="3-create-a-form">3. Create a Form</h4>
+<p>Define the fields for adding or editing items:</p>
 <pre><code class="language-json">&quot;form_data&quot;: [
     {
         &quot;name&quot;: &quot;title&quot;,
         &quot;title&quot;: &quot;Title *&quot;,
         &quot;_type&quot;: &quot;input&quot;,
         &quot;type&quot;: &quot;text&quot;,
-        &quot;required&quot;: &quot;true&quot;,
+        &quot;required&quot;: true,
         &quot;pclass&quot;: &quot;ins-col-6&quot;
-    },
-    {
-        &quot;name&quot;: &quot;kit_disabled&quot;,
-        &quot;_type&quot;: &quot;input&quot;,
-        &quot;type&quot;: &quot;bool&quot;,
-        &quot;value&quot;: &quot;1&quot;,
-        &quot;pclass&quot;: &quot;ins-col-3&quot;
     }
 ]
 </code></pre>
 <ul>
-<li><strong><code>_type</code></strong>: Input type (e.g., input, select).</li>
-<li><strong><code>type</code></strong>: HTML input type (e.g., text, bool).</li>
-<li><strong><code>required</code></strong>: Marks the field as mandatory.</li>
-<li><strong><code>pclass</code></strong>: CSS classes for layout.</li>
+<li><strong><code>_type</code></strong>: The input type (e.g., text box).</li>
+<li><strong><code>required</code></strong>: Makes the field mandatory.</li>
 </ul>
-<h4 id="4-filter-options-list_filter">4. Filter Options (<code>list_filter</code>)</h4>
-<p>Define the fields for filtering records under the <code>list_filter</code> key:</p>
+<h4 id="4-add-filters">4. Add Filters</h4>
+<p>Set up filters to search or sort data:</p>
 <pre><code class="language-json">&quot;list_filter&quot;: [
     {
         &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Menu Title *&quot;,
+        &quot;title&quot;: &quot;Search Title&quot;,
         &quot;_type&quot;: &quot;input&quot;,
-        &quot;_info&quot;: &quot;Search in &lt;b&gt;Title&lt;/b&gt; by &lt;b&gt;@(value)&lt;/b&gt;&quot;,
         &quot;type&quot;: &quot;text&quot;,
+        &quot;_info&quot;: &quot;Search in &lt;b&gt;Title&lt;/b&gt; by &lt;b&gt;@(value)&lt;/b&gt;&quot;,
         &quot;main&quot;: true,
-        &quot;required&quot;: &quot;true&quot;,
         &quot;pclass&quot;: &quot;ins-col-12&quot;
     }
 ]
 </code></pre>
 <ul>
 <li><strong><code>_info</code></strong>: Custom search information text.</li>
-<li><strong><code>main</code></strong>: Marks the field as a primary filter.</li>
+<li><strong><code>_info</code></strong>: The label to display.</li>
 </ul>
-<h3 id="configuring-crud-options-dynamically">Configuring CRUD Options Dynamically</h3>
-<p>Instead of using <code>properties.json</code>, you can define CRUD options dynamically in your Python code using the CRUD library.</p>
-<ol>
-<li>
-<p>Import CRUD operations:
-   <code>python
-   ops = self.ins._apps._crud_ops</code></p>
-</li>
-<li>
-<p>Set CRUD options:</p>
-</li>
-<li><strong>List fields</strong>:
-     <code>python
-     ops._list_data = [
-         {
-             "name": "title",
-             "title": "My Title",
-             "view": "text",
-             "class": "ins-col-9"
-         },
-         {
-             "name": "content",
-             "title": "Content",
-             "_view": "limit",
-             "limit_ops": "25",
-             "class": "ins-col-2"
-         }
-     ]</code></li>
-<li><strong>Form fields</strong>:
-     <code>python
-     ops._form_data = [
-         {
-             "name": "title",
-             "title": "Title",
-             "_type": "input",
-             "type": "text",
-             "required": "true",
-             "pclass": "ins-col-6"
-         }
-     ]</code></li>
-<li><strong>Filter fields</strong>:
-     <code>python
-     ops._list_filter = [
-         {
-             "name": "title",
-             "title": "Filter Title",
-             "_type": "input",
-             "type": "text",
-             "main": true
-         }
-     ]</code></li>
-<li>
-<p><strong>Database table</strong>:
-     <code>python
-     ops._table = "kit_menu"</code></p>
-</li>
-<li>
-<p>Return the CRUD system:
-   <code>python
-   return self.ins._apps._crud(ops)</code></p>
-</li>
-</ol>
-<h3 id="notes">Notes</h3>
-<ul>
-<li>Use meaningful field names and titles for clarity.</li>
-<li>Test all CRUD functionalities to ensure the desired behavior.</li>
-<li>Combine JSON configuration and dynamic code as needed for flexibility.</li>
-</ul>
-<p>One major advantage of using a JSON file to configure CRUD options is the ability to make changes without redeploying the entire project. This saves time and effort, especially in large or live applications, because:</p>
-<ul>
-<li><strong>Immediate Updates</strong>: Changes to the JSON file take effect as soon as the file is saved. There is no downtime for redeployment.</li>
-<li><strong>Ease of Maintenance</strong>: JSON files are straightforward and human-readable, making them ideal for quick edits or adding new configurations.</li>
-<li><strong>Flexibility</strong>: Multiple team members can modify different parts of the configuration without affecting the core application code.</li>
-</ul></div>
+<hr />
+<h2 id="dynamic-crud-setup-in-python">Dynamic CRUD Setup in Python</h2>
+<h3 id="skip-the-json-file">Skip the JSON File</h3>
+<p>If you don’t want to use <code>properties.json</code>, you can define CRUD options directly in Python.</p>
+<h4 id="example">Example:</h4>
+<pre><code class="language-python">ops = self.ins._apps._crud_ops
+
+# List fields
+ops._list_data = [
+    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;view&quot;: &quot;text&quot;, &quot;class&quot;: &quot;ins-col-9&quot;}
+]
+
+# Form fields
+ops._form_data = [
+    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
+]
+
+# Filters
+ops._list_filter = [
+    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Search Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
+]
+
+# Table name
+ops._table = &quot;kit_menu&quot;
+
+# Return CRUD system
+return self.ins._apps._crud(ops)
+</code></pre>
+<hr />
+<h2 id="why-use-propertiesjson">Why Use <code>properties.json</code>?</h2>
+<p>Using <code>properties.json</code> makes it easy to:
+- Update settings without changing code.
+- Test changes instantly by saving the file.
+- Work with team members without editing the app’s core logic.</p>
+<hr />
+<p>This version is designed for beginners with straightforward explanations, examples, and fewer technical details. Let me know if you need further refinements!</p></div>
             </div>
         </div>
 
