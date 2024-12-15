@@ -7,3 +7,4 @@ nav:
   - Widget: widget.md
   - Menu Item: menu_item.md
   - CRUD: crud.md
+  - Database: db.md
