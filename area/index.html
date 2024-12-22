@@ -191,36 +191,35 @@ def admin(path):
    from ins_ex.index import ins_ex_bp</code>  </li>
 <li>Before the <code>app.run</code> method, register the area with a URL prefix:<br />
 <code>python
-   app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex")</code>
-The code after adding this two lines should be like this 
-    ```python
-     from flask import Flask, request
-        from ins_kit.ins import ins
-        from index import ahome
-        from ins_admin.index import ins_admin_bp
-        from ins_ex.index import ins_ex_bp ##import new area
-        from ajax import ajax_bp<pre><code>app = Flask(__name__)
-
-app.secret_key = 'ins12345'
-app.config['SESSION_TYPE'] = 'filesystem'
-@app.before_request
-def before_request():
-ins._eng._int(request.path)
-
-app.register_blueprint(ahome, url_prefix=f"/")
-
-app.register_blueprint(ins_admin_bp, url_prefix=f"/ins_admin")
-
-app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex") ##register new area
-
-app.register_blueprint(ajax_bp, url_prefix=f"/ins_ajax")
-
-if __name__ == '__main__':
- app.run(debug=True)
-</code></pre>
-<p>```</p>
-</li>
+   app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex")</code></li>
 </ol>
+<p><strong>The code after adding this two lines should be like this</strong></p>
+<pre><code>    from flask import Flask, request
+    from ins_kit.ins import ins
+    from index import ahome
+    from ins_admin.index import ins_admin_bp
+    from ins_ex.index import ins_ex_bp ##import new area
+    from ajax import ajax_bp
+
+    app = Flask(__name__)
+
+    app.secret_key = 'ins12345'
+    app.config['SESSION_TYPE'] = 'filesystem'
+    @app.before_request
+    def before_request():
+    ins._eng._int(request.path)
+
+    app.register_blueprint(ahome, url_prefix=f"/")
+
+    app.register_blueprint(ins_admin_bp, url_prefix=f"/ins_admin")
+
+    app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex") ##register new area
+
+    app.register_blueprint(ajax_bp, url_prefix=f"/ins_ajax")
+
+    if __name__ == '__main__':
+     app.run(debug=True)
+</code></pre>
 <hr />
 <h3 id="step-5-define-a-ui-template">Step 5: Define a UI Template</h3>
 <ol>
