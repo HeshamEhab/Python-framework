@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>CRUD - Insya Python Framework</title>
+        <title>Area - Insya Python Framework</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                                 <a href="../menu_item/" class="nav-link">Menu Item</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">CRUD</a>
+                                <a href="../crud/" class="nav-link">CRUD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../db/" class="nav-link">Database</a>
@@ -59,7 +59,7 @@
                                 <a href="../js/" class="nav-link">JS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../area/" class="nav-link">Area</a>
+                                <a href="./" class="nav-link active" aria-current="page">Area</a>
                             </li>
                         </ul>
 
@@ -70,12 +70,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../menu_item/" class="nav-link">
+                                <a rel="prev" href="../js/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../db/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -97,28 +97,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#what-is-a-crud-system" class="nav-link">What is a CRUD System?</a>
+            <li class="nav-item" data-bs-level="1"><a href="#creating-and-configuring-an-area" class="nav-link">Creating and Configuring an Area</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#what-is-an-area" class="nav-link">What is an Area?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#how-to-enable-crud" class="nav-link">How to Enable CRUD</a>
+            <li class="nav-item" data-bs-level="2"><a href="#how-to-create-a-new-area" class="nav-link">How to Create a New Area</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#customizing-crud-with-propertiesjson" class="nav-link">Customizing CRUD with properties.json</a>
+            <li class="nav-item" data-bs-level="2"><a href="#accessing-the-area" class="nav-link">Accessing the Area</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#dynamic-crud-setup-in-python" class="nav-link">Dynamic CRUD Setup in Python</a>
+            <li class="nav-item" data-bs-level="2"><a href="#notes_1" class="nav-link">Notes:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#why-use-propertiesjson" class="nav-link">Why Use properties.json?</a>
-              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -126,138 +122,140 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="what-is-a-crud-system">What is a CRUD System?</h2>
-<p>A CRUD system allows you to manage data in your app with four basic functions:
-- <strong>Create</strong>: Add new records.
-- <strong>Read</strong>: View existing records.
-- <strong>Update</strong>: Edit records.
-- <strong>Delete</strong>: Remove records.</p>
-<h3 id="why-use-crud">Why Use CRUD?</h3>
-<p>It makes database tasks easy by creating a user-friendly interface for these functions.</p>
-<p>With CRUD, you can:
-- Show a list of data.
-- Add new items.
-- Edit or delete items.
-- Filter data to find what you need.</p>
+<h1 id="creating-and-configuring-an-area">Creating and Configuring an Area</h1>
+<h2 id="what-is-an-area">What is an Area?</h2>
+<p>An <strong>area</strong> is like a mini-website inside the framework. It has its own structure and components, including apps, widgets, and web files. Think of it as a separate section of your system that can function independently, while still being part of the larger framework.</p>
+<p>For example, if your framework is a big house, each area is like a room with its own purpose and design. You can create as many areas as you need, and each can include folders like <code>ins_apps</code>, <code>ins_wdgts</code>, <code>ins_web</code>, and other necessary files to operate as its own mini-website.</p>
 <hr />
-<h2 id="how-to-enable-crud">How to Enable CRUD</h2>
-<h3 id="step-1-add-the-code">Step 1: Add the Code</h3>
-<p>To enable CRUD in your app, add this line to the <code>out</code> method of your Python file:</p>
-<pre><code class="language-python">return self.ins._apps._crud(properties=self.app._properties)
-</code></pre>
-<h3 id="step-2-connect-to-propertiesjson">Step 2: Connect to <code>properties.json</code></h3>
-<p>This code links your app to a file called <code>properties.json</code>. This file controls how your data is displayed, edited, and filtered.</p>
-<h3 id="what-happens-next">What Happens Next?</h3>
-<p>Your app will now have:
-- A list of items.
-- Buttons to add, edit, or delete items.
-- Filters to search and sort items.</p>
+<h2 id="how-to-create-a-new-area">How to Create a New Area</h2>
+<h3 id="step-1-create-the-area-folder">Step 1: Create the Area Folder</h3>
+<ol>
+<li>Navigate to the root directory (<code>home</code>).  </li>
+<li>Create a new folder for your area with the prefix <code>ins</code>.  </li>
+<li><strong>Example:</strong> For an example area, name it <code>ins_ex</code> (where <code>ex</code> stands for example).  </li>
+</ol>
 <hr />
-<h2 id="customizing-crud-with-propertiesjson">Customizing CRUD with <code>properties.json</code></h2>
-<h3 id="what-is-propertiesjson">What is <code>properties.json</code>?</h3>
-<p>This file lets you customize how your CRUD system works. You can decide:
-- What data to show in the list.
-- What fields to include in forms.
-- How to filter the data.</p>
-<h3 id="key-parts-of-propertiesjson">Key Parts of <code>properties.json</code></h3>
-<h4 id="1-choose-a-table">1. Choose a Table</h4>
-<p>Tell the CRUD system which database table to use:</p>
-<pre><code class="language-json">&quot;table&quot;: &quot;kit_menu&quot;
+<h3 id="step-2-create-an-indexpy-file">Step 2: Create an <code>index.py</code> File</h3>
+<ol>
+<li>Inside the newly created area folder, create an <code>index.py</code> file.  </li>
+<li>Add the following code to the <code>index.py</code> file:  </li>
+</ol>
+<pre><code class="language-python">from flask import Flask, g, Blueprint, abort, render_template
+from ins_kit.ins import ins
+
+area = &quot;ins_ex&quot;  # Replace with your area name
+tmp = f&quot;../{area}/{ins._map.WEB_FOLDER}/{ins._map.TEMPLATES_FOLDER}&quot;
+static = f&quot;../{area}/{ins._map.WEB_FOLDER}&quot;
+
+ins_ex_bp = Blueprint(area, __name__, template_folder=tmp, static_folder=static)
+
+@ins_ex_bp.route('/', defaults={'path': ''}, methods=['GET', 'POST'])
+@ins_ex_bp.route('/&lt;path:path&gt;', methods=['GET', 'POST'])
+def admin(path):
+    return ins._tmp._render(area, path)
 </code></pre>
-<h4 id="2-customize-the-list-view">2. Customize the List View</h4>
-<p>Decide which fields to show in the list:</p>
-<pre><code class="language-json">&quot;list_data&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Title&quot;,
-        &quot;view&quot;: &quot;text&quot;,
-        &quot;class&quot;: &quot;ins-col-grow&quot;
-    },
-    {
-        &quot;name&quot;: &quot;status&quot;,
-        &quot;title&quot;: &quot;Status&quot;,
-        &quot;view&quot;: &quot;text&quot;,
-        &quot;class&quot;: &quot;ins-col-2&quot;
-    }
-]
-</code></pre>
+<h4 id="notes">Notes:</h4>
 <ul>
-<li><strong><code>name</code></strong>: The database field name.</li>
-<li><strong><code>title</code></strong>: The label to display.</li>
-<li><strong><code>view</code></strong>: How the field looks (e.g., text).</li>
-<li><strong><code>class</code></strong>: CSS styling for layout.</li>
-</ul>
-<h4 id="3-create-a-form">3. Create a Form</h4>
-<p>Define the fields for adding or editing items:</p>
-<pre><code class="language-json">&quot;form_data&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Title *&quot;,
-        &quot;_type&quot;: &quot;input&quot;,
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;required&quot;: true,
-        &quot;pclass&quot;: &quot;ins-col-6&quot;
-    }
-]
-</code></pre>
-<ul>
-<li><strong><code>_type</code></strong>: The input type (e.g., text box).</li>
-<li><strong><code>required</code></strong>: Makes the field mandatory.</li>
-</ul>
-<h4 id="4-add-filters">4. Add Filters</h4>
-<p>Set up filters to search or sort data:</p>
-<pre><code class="language-json">&quot;list_filter&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Search Title&quot;,
-        &quot;_type&quot;: &quot;input&quot;,
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;_info&quot;: &quot;Search in &lt;b&gt;Title&lt;/b&gt; by &lt;b&gt;@(value)&lt;/b&gt;&quot;,
-        &quot;main&quot;: true,
-        &quot;pclass&quot;: &quot;ins-col-12&quot;
-    }
-]
-</code></pre>
-<ul>
-<li><strong><code>_info</code></strong>: Custom search information text.</li>
-<li><strong><code>main</code></strong>: By enabling this field, the filter will appear on the main page (at the top of the list page).</li>
+<li>If the area needs to be secured (e.g., an admin panel), replace the last return statement with:<br />
+<code>python
+  return ins._tmp._login(area, path)</code>  </li>
+<li>If the area should be publicly accessible (e.g., a homepage), keep:<br />
+<code>python
+  return ins._tmp._render(area, path)</code></li>
 </ul>
 <hr />
-<h2 id="dynamic-crud-setup-in-python">Dynamic CRUD Setup in Python</h2>
-<h3 id="skip-the-json-file">Skip the JSON File</h3>
-<p>If you don’t want to use <code>properties.json</code>, you can define CRUD options directly in Python.</p>
-<h4 id="example">Example:</h4>
-<pre><code class="language-python">ops = self.ins._apps._crud_ops
-
-# List fields
-ops._list_data = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;view&quot;: &quot;text&quot;, &quot;class&quot;: &quot;ins-col-9&quot;}
-]
-
-# Form fields
-ops._form_data = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
-]
-
-# Filters
-ops._list_filter = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Search Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
-]
-
-# Table name
-ops._table = &quot;kit_menu&quot;
-
-# Return CRUD system
-return self.ins._apps._crud(ops)
+<h3 id="step-3-add-the-area-to-appjson">Step 3: Add the Area to <code>app.json</code></h3>
+<ol>
+<li>Open the file located at <code>/ins_pros/app.json</code>.  </li>
+<li>Under the <code>"areas"</code> tag, add an entry for your area:  </li>
+</ol>
+<pre><code class="language-json">&quot;ins_ex&quot;: { 
+    &quot;url&quot;: &quot;ins_ex&quot;,
+    &quot;name&quot;: &quot;ins_ex&quot;,
+    &quot;title&quot;: &quot;Ex Area&quot;, 
+    &quot;logo&quot;: &quot;ex.png&quot; 
+}
 </code></pre>
+<h4 id="key-points">Key Points:</h4>
+<ul>
+<li><strong>Key and Name and URL:</strong> Should match exactly; these identify the area in the system.  </li>
+<li><strong>Title:</strong> Displayed as the area's title in the UI.  </li>
+<li><strong>Logo:</strong> Path to the logo file for the area.  </li>
+</ul>
 <hr />
-<h2 id="why-use-propertiesjson">Why Use <code>properties.json</code>?</h2>
-<p>Using <code>properties.json</code> makes it easy to:
-- Update settings without changing code.
-- Test changes instantly by saving the file.
-- Work with team members without editing the app’s core logic.</p>
+<h3 id="step-4-register-the-area-in-the-main-file">Step 4: Register the Area in the Main File</h3>
+<ol>
+<li>Open the main file that starts the system.  </li>
+<li>Add the following in the <code>include</code> section:<br />
+<code>python
+   from ins_ex.index import ins_ex_bp</code>  </li>
+<li>Before the <code>app.run</code> method, register the area with a URL prefix:<br />
+<code>python
+   app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex")</code>
+The code after adding this two lines should be like this 
+    ```python
+     from flask import Flask, request
+        from ins_kit.ins import ins
+        from index import ahome
+        from ins_admin.index import ins_admin_bp
+        from ins_ex.index import ins_ex_bp ##import new area
+        from ajax import ajax_bp<pre><code>app = Flask(__name__)
+
+app.secret_key = 'ins12345'
+app.config['SESSION_TYPE'] = 'filesystem'
+@app.before_request
+def before_request():
+ins._eng._int(request.path)
+
+app.register_blueprint(ahome, url_prefix=f"/")
+
+app.register_blueprint(ins_admin_bp, url_prefix=f"/ins_admin")
+
+app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex") ##register new area
+
+app.register_blueprint(ajax_bp, url_prefix=f"/ins_ajax")
+
+if __name__ == '__main__':
+ app.run(debug=True)
+</code></pre>
+<p>```</p>
+</li>
+</ol>
 <hr />
-<p>This version is designed for beginners with straightforward explanations, examples, and fewer technical details. Let me know if you need further refinements!</p></div>
+<h3 id="step-5-define-a-ui-template">Step 5: Define a UI Template</h3>
+<ol>
+<li>Access the admin panel:  </li>
+<li>Navigate to <code>Settings -&gt; Database</code>.  </li>
+<li>Open the <code>kit_template</code> table.  </li>
+<li>If you haven’t created a specific template for your new area, you can duplicate an existing one.  </li>
+<li><strong>Example:</strong> Duplicate the <code>ins_admin</code> template row.  </li>
+<li>Replace the <code>tar_area</code> field value with the new area name (<code>ins_ex</code>).  </li>
+<li>Ensure the <code>kit_default</code> field value is set to <code>1</code>.</li>
+</ol>
+<hr />
+<h3 id="step-6-create-an-app-for-the-area">Step 6: Create an App for the Area</h3>
+<ol>
+<li>Inside the area folder, create a subfolder for apps named <code>ins_apps</code>.  </li>
+<li>Follow the <a href="/Python-framework/app">App Creation Guide</a> to create an app within this folder.  </li>
+</ol>
+<hr />
+<h3 id="step-7-add-a-menu-item">Step 7: Add a Menu Item</h3>
+<ol>
+<li>Refer to the <a href="/Python-framework/menu_item">Menu Item Creation Guide</a> to link the app to the area’s menu.  </li>
+</ol>
+<hr />
+<h2 id="accessing-the-area">Accessing the Area</h2>
+<ol>
+<li>Enter your area’s name in the URL:  </li>
+<li><strong>Example:</strong> <code>https://insya.ins_ex.com</code>  </li>
+<li>If the area is secured (<code>ins._tmp._login</code>), you must log in to access it.  </li>
+</ol>
+<hr />
+<h2 id="notes_1">Notes:</h2>
+<ul>
+<li><strong>Folder Structure:</strong> Ensure all necessary folders (e.g., <code>ins_apps</code>, <code>ins_web</code>) exist within the area, even if not initially used.  </li>
+<li><strong>Flexibility:</strong> Areas can be structured to include any required part of the framework.</li>
+</ul></div>
             </div>
         </div>
 

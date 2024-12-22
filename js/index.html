@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>CRUD - Insya Python Framework</title>
+        <title>JS - Insya Python Framework</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -50,13 +50,13 @@
                                 <a href="../menu_item/" class="nav-link">Menu Item</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">CRUD</a>
+                                <a href="../crud/" class="nav-link">CRUD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../db/" class="nav-link">Database</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../js/" class="nav-link">JS</a>
+                                <a href="./" class="nav-link active" aria-current="page">JS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../area/" class="nav-link">Area</a>
@@ -70,12 +70,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../menu_item/" class="nav-link">
+                                <a rel="prev" href="../db/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../db/" class="nav-link">
+                                <a rel="next" href="../area/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -97,28 +97,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#what-is-a-crud-system" class="nav-link">What is a CRUD System?</a>
+            <li class="nav-item" data-bs-level="1"><a href="#javascript-in-our-framework" class="nav-link">JavaScript in Our Framework</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#why-use-javascript" class="nav-link">Why Use JavaScript?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#how-to-enable-crud" class="nav-link">How to Enable CRUD</a>
+            <li class="nav-item" data-bs-level="2"><a href="#including-javascript-files-in-your-python-file" class="nav-link">Including JavaScript Files in Your Python File</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#customizing-crud-with-propertiesjson" class="nav-link">Customizing CRUD with properties.json</a>
+            <li class="nav-item" data-bs-level="2"><a href="#using-javascript-in-the-framework" class="nav-link">Using JavaScript in the Framework</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#dynamic-crud-setup-in-python" class="nav-link">Dynamic CRUD Setup in Python</a>
+            <li class="nav-item" data-bs-level="2"><a href="#ajax" class="nav-link">AJAX</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="2"><a href="#why-use-propertiesjson" class="nav-link">Why Use properties.json?</a>
-              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -126,138 +122,123 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="what-is-a-crud-system">What is a CRUD System?</h2>
-<p>A CRUD system allows you to manage data in your app with four basic functions:
-- <strong>Create</strong>: Add new records.
-- <strong>Read</strong>: View existing records.
-- <strong>Update</strong>: Edit records.
-- <strong>Delete</strong>: Remove records.</p>
-<h3 id="why-use-crud">Why Use CRUD?</h3>
-<p>It makes database tasks easy by creating a user-friendly interface for these functions.</p>
-<p>With CRUD, you can:
-- Show a list of data.
-- Add new items.
-- Edit or delete items.
-- Filter data to find what you need.</p>
-<hr />
-<h2 id="how-to-enable-crud">How to Enable CRUD</h2>
-<h3 id="step-1-add-the-code">Step 1: Add the Code</h3>
-<p>To enable CRUD in your app, add this line to the <code>out</code> method of your Python file:</p>
-<pre><code class="language-python">return self.ins._apps._crud(properties=self.app._properties)
+<h1 id="javascript-in-our-framework">JavaScript in Our Framework</h1>
+<h2 id="why-use-javascript">Why Use JavaScript?</h2>
+<p>JavaScript is a powerful and versatile programming language that allows you to add interactivity and dynamic functionality to your web applications. By using JavaScript in our framework, you can:</p>
+<ul>
+<li>Respond to user actions in real-time (e.g., clicks, form submissions, or input changes).</li>
+<li>Dynamically update content without reloading the page.</li>
+<li>Communicate with the server to fetch or send data using AJAX.</li>
+<li>Enhance the overall user experience with smooth animations and interactive elements.</li>
+</ul>
+<h2 id="including-javascript-files-in-your-python-file">Including JavaScript Files in Your Python File</h2>
+<p>To integrate JavaScript into your app, the JavaScript file should be stored in a specific directory structure relative to your Python file.</p>
+<h3 id="directory-structure">Directory Structure:</h3>
+<p>If your Python file is located in:
+<code>ins_apps -&gt; app_blog</code></p>
+<p>Then the JavaScript file should be located in:
+<code>ins_web -&gt; ins_apps -&gt; app_blog</code></p>
+<h3 id="including-the-javascript-file">Including the JavaScript File:</h3>
+<p>To include your JavaScript file in the application, add the following line inside the <code>out</code> method of your Python file:</p>
+<pre><code class="language-python">self.app._include(&quot;script.js&quot;)
 </code></pre>
-<h3 id="step-2-connect-to-propertiesjson">Step 2: Connect to <code>properties.json</code></h3>
-<p>This code links your app to a file called <code>properties.json</code>. This file controls how your data is displayed, edited, and filtered.</p>
-<h3 id="what-happens-next">What Happens Next?</h3>
-<p>Your app will now have:
-- A list of items.
-- Buttons to add, edit, or delete items.
-- Filters to search and sort items.</p>
-<hr />
-<h2 id="customizing-crud-with-propertiesjson">Customizing CRUD with <code>properties.json</code></h2>
-<h3 id="what-is-propertiesjson">What is <code>properties.json</code>?</h3>
-<p>This file lets you customize how your CRUD system works. You can decide:
-- What data to show in the list.
-- What fields to include in forms.
-- How to filter the data.</p>
-<h3 id="key-parts-of-propertiesjson">Key Parts of <code>properties.json</code></h3>
-<h4 id="1-choose-a-table">1. Choose a Table</h4>
-<p>Tell the CRUD system which database table to use:</p>
-<pre><code class="language-json">&quot;table&quot;: &quot;kit_menu&quot;
-</code></pre>
-<h4 id="2-customize-the-list-view">2. Customize the List View</h4>
-<p>Decide which fields to show in the list:</p>
-<pre><code class="language-json">&quot;list_data&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Title&quot;,
-        &quot;view&quot;: &quot;text&quot;,
-        &quot;class&quot;: &quot;ins-col-grow&quot;
-    },
-    {
-        &quot;name&quot;: &quot;status&quot;,
-        &quot;title&quot;: &quot;Status&quot;,
-        &quot;view&quot;: &quot;text&quot;,
-        &quot;class&quot;: &quot;ins-col-2&quot;
-    }
-]
+<h2 id="using-javascript-in-the-framework">Using JavaScript in the Framework</h2>
+<h3 id="selectors">Selectors</h3>
+<p>To interact with elements in your HTML, use the <code>ins</code> selector:</p>
+<pre><code class="language-javascript">ins(&quot;select.src_area&quot;)
 </code></pre>
 <ul>
-<li><strong><code>name</code></strong>: The database field name.</li>
-<li><strong><code>title</code></strong>: The label to display.</li>
-<li><strong><code>view</code></strong>: How the field looks (e.g., text).</li>
-<li><strong><code>class</code></strong>: CSS styling for layout.</li>
+<li><strong>Explanation</strong>: The selector inside the parentheses is a standard CSS selector. For example:</li>
+<li><code>select.src_area</code> refers to a <code>&lt;select&gt;</code> element with the class <code>src_area</code>.</li>
+<li>Use <code>.</code> for classes and <code>#</code> for IDs as in standard CSS selectors.</li>
 </ul>
-<h4 id="3-create-a-form">3. Create a Form</h4>
-<p>Define the fields for adding or editing items:</p>
-<pre><code class="language-json">&quot;form_data&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Title *&quot;,
-        &quot;_type&quot;: &quot;input&quot;,
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;required&quot;: true,
-        &quot;pclass&quot;: &quot;ins-col-6&quot;
-    }
-]
+<h3 id="events">Events</h3>
+<p>Events define when an action should occur. You can attach an event to your selector using the <code>._on</code> method. For example:</p>
+<pre><code class="language-javascript">._on(&quot;change&quot;)
 </code></pre>
+<p>Here is a list of commonly used events:
+- <code>change</code>: Triggered when a form element’s value changes.
+- <code>click</code>: Triggered when the element is clicked.
+- <code>mouseover</code>: Triggered when the mouse hovers over the element.
+- <code>mouseout</code>: Triggered when the mouse leaves the element.
+- <code>keyup</code>: Triggered when a key is released.
+- <code>keydown</code>: Triggered when a key is pressed.
+- <code>scroll</code>: Triggered when the user scrolls.
+- <code>submit</code>: Triggered when a form is submitted.</p>
+<p>You can find more events <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">here</a>.</p>
+<h3 id="actions">Actions</h3>
+<p>Actions define what happens when the event occurs. For example:</p>
+<pre><code class="language-javascript">function(o){
+    console.log(&quot;My code works&quot;);
+}
+</code></pre>
+<h3 id="complete-example">Complete Example</h3>
+<p>Here’s how to combine the selector, event, and action into a functional piece of code:</p>
+<pre><code class="language-javascript">ins(&quot;select.src_area&quot;)._on(&quot;change&quot;, function(o){
+    console.log(&quot;My code works&quot;);
+}, true);
+</code></pre>
+<h4 id="notes">Notes:</h4>
 <ul>
-<li><strong><code>_type</code></strong>: The input type (e.g., text box).</li>
-<li><strong><code>required</code></strong>: Makes the field mandatory.</li>
+<li>The <code>o</code> variable represents the object where the event occurred.</li>
+<li>If the class is used in multiple objects, <code>o</code> allows you to target the specific object that triggered the event.</li>
 </ul>
-<h4 id="4-add-filters">4. Add Filters</h4>
-<p>Set up filters to search or sort data:</p>
-<pre><code class="language-json">&quot;list_filter&quot;: [
-    {
-        &quot;name&quot;: &quot;title&quot;,
-        &quot;title&quot;: &quot;Search Title&quot;,
-        &quot;_type&quot;: &quot;input&quot;,
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;_info&quot;: &quot;Search in &lt;b&gt;Title&lt;/b&gt; by &lt;b&gt;@(value)&lt;/b&gt;&quot;,
-        &quot;main&quot;: true,
-        &quot;pclass&quot;: &quot;ins-col-12&quot;
-    }
-]
+<h3 id="passing-data-with-attributes">Passing Data with Attributes</h3>
+<p>To pass data from an HTML element to JavaScript, use the <code>data-*</code> attributes. For example:</p>
+<h4 id="html">HTML:</h4>
+<pre><code class="language-html">&lt;select class=&quot;src_area&quot; data-id=&quot;123&quot;&gt;&lt;/select&gt;
 </code></pre>
+<h4 id="javascript">JavaScript:</h4>
+<pre><code class="language-javascript">o._getData(&quot;id&quot;);
+</code></pre>
+<p>This retrieves the value of the <code>data-id</code> attribute (e.g., <code>123</code>).</p>
+<h2 id="ajax">AJAX</h2>
+<h3 id="what-is-ajax">What is AJAX?</h3>
+<p>AJAX (Asynchronous JavaScript and XML) allows you to communicate with the server without reloading the page. It is essential for creating dynamic and responsive web applications.</p>
+<h3 id="why-use-ajax">Why Use AJAX?</h3>
 <ul>
-<li><strong><code>_info</code></strong>: Custom search information text.</li>
-<li><strong><code>main</code></strong>: By enabling this field, the filter will appear on the main page (at the top of the list page).</li>
+<li>Fetch or send data to the server without refreshing the page.</li>
+<li>Improve user experience with faster interactions.</li>
+<li>Enable real-time updates in your app.</li>
 </ul>
-<hr />
-<h2 id="dynamic-crud-setup-in-python">Dynamic CRUD Setup in Python</h2>
-<h3 id="skip-the-json-file">Skip the JSON File</h3>
-<p>If you don’t want to use <code>properties.json</code>, you can define CRUD options directly in Python.</p>
-<h4 id="example">Example:</h4>
-<pre><code class="language-python">ops = self.ins._apps._crud_ops
-
-# List fields
-ops._list_data = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;view&quot;: &quot;text&quot;, &quot;class&quot;: &quot;ins-col-9&quot;}
-]
-
-# Form fields
-ops._form_data = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
-]
-
-# Filters
-ops._list_filter = [
-    {&quot;name&quot;: &quot;title&quot;, &quot;title&quot;: &quot;Search Title&quot;, &quot;_type&quot;: &quot;input&quot;, &quot;type&quot;: &quot;text&quot;}
-]
-
-# Table name
-ops._table = &quot;kit_menu&quot;
-
-# Return CRUD system
-return self.ins._apps._crud(ops)
+<h3 id="using-ajax-in-our-framework">Using AJAX in Our Framework</h3>
+<h4 id="define-the-method">Define the Method</h4>
+<p>First, call the desired method from the Python file. For example:</p>
+<pre><code class="language-javascript">ins(&quot;_get_js_data&quot;)
 </code></pre>
-<hr />
-<h2 id="why-use-propertiesjson">Why Use <code>properties.json</code>?</h2>
-<p>Using <code>properties.json</code> makes it easy to:
-- Update settings without changing code.
-- Test changes instantly by saving the file.
-- Work with team members without editing the app’s core logic.</p>
-<hr />
-<p>This version is designed for beginners with straightforward explanations, examples, and fewer technical details. Let me know if you need further refinements!</p></div>
+<h4 id="specify-the-library">Specify the Library</h4>
+<p>Define the type of AJAX operation based on the part of the application you’re working on. For example:</p>
+<pre><code class="language-javascript">._ajax._app
+</code></pre>
+<p>Replace <code>app</code> with the relevant section, such as <code>wdgt</code> for widgets.</p>
+<h4 id="pass-data">Pass Data</h4>
+<p>Prepare the data to send to the server. For example:</p>
+<pre><code class="language-javascript">{&quot;id&quot;: o._getData(&quot;id&quot;)}
+</code></pre>
+<p>This sends the <code>id</code> value retrieved from the object using the <code>o._getData</code> method.</p>
+<h4 id="handle-the-response">Handle the Response</h4>
+<p>Specify the actions to perform after the server responds. For example:</p>
+<pre><code class="language-javascript">function(data){
+    console.log(&quot;Operation done&quot;);
+}
+</code></pre>
+<h3 id="complete-ajax-example">Complete AJAX Example</h3>
+<p>Here’s how to put it all together:</p>
+<pre><code class="language-javascript">ins(&quot;_get_js_data&quot;)._ajax._app({&quot;id&quot;: o._getData(&quot;id&quot;)}, function(data){
+    console.log(&quot;Operation done&quot;);
+});
+</code></pre>
+<h4 id="explanation">Explanation:</h4>
+<ol>
+<li><strong>Selector</strong>: <code>ins("_get_js_data")</code> specifies the method to call.</li>
+<li><strong>Data</strong>: <code>{ "id": o._getData("id") }</code> sends the <code>id</code> to the server.</li>
+<li><strong>Callback</strong>: <code>function(data)</code> handles the server’s response.</li>
+</ol>
+<h3 id="notes_1">Notes:</h3>
+<ul>
+<li>The <code>data</code> parameter in the callback contains the server’s response.</li>
+<li>Use this response to update the UI, show notifications, or take other actions.</li>
+</ul></div>
             </div>
         </div>
 
@@ -265,12 +246,12 @@ return self.ins._apps._crud(ops)
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js"></script>
+        <script src="base.js"></script>
         <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
