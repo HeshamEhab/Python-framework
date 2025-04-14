@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Area - Insya Python Framework</title>
+        <title>Other - Insya Python Framework</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -59,10 +59,13 @@
                                 <a href="../js/" class="nav-link">JS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Area</a>
+                                <a href="../area/" class="nav-link">Area</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../lang/" class="nav-link">Languages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Other</a>
                             </li>
                         </ul>
 
@@ -73,12 +76,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../js/" class="nav-link">
+                                <a rel="prev" href="../lang/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lang/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -100,24 +103,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#creating-and-configuring-an-area" class="nav-link">Creating and Configuring an Area</a>
+            <li class="nav-item" data-bs-level="2"><a href="#custom-options-in-crud-input-configuration" class="nav-link">Custom Options in CRUD Input Configuration</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#what-is-an-area" class="nav-link">What is an Area?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#how-to-create-a-new-area" class="nav-link">How to Create a New Area</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#accessing-the-area" class="nav-link">Accessing the Area</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#notes_1" class="nav-link">Notes:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -125,139 +112,82 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="creating-and-configuring-an-area">Creating and Configuring an Area</h1>
-<h2 id="what-is-an-area">What is an Area?</h2>
-<p>An <strong>area</strong> is like a mini-website inside the framework. It has its own structure and components, including apps, widgets, and web files. Think of it as a separate section of your system that can function independently, while still being part of the larger framework.</p>
-<p>For example, if your framework is a big house, each area is like a room with its own purpose and design. You can create as many areas as you need, and each can include folders like <code>ins_apps</code>, <code>ins_wdgts</code>, <code>ins_web</code>, and other necessary files to operate as its own mini-website.</p>
+<h2 id="custom-options-in-crud-input-configuration">Custom Options in CRUD Input Configuration</h2>
+<p>This guide explains some helpful options you can use to control how <code>&lt;select&gt;</code> inputs work in your CRUD system.</p>
 <hr />
-<h2 id="how-to-create-a-new-area">How to Create a New Area</h2>
-<h3 id="step-1-create-the-area-folder">Step 1: Create the Area Folder</h3>
-<ol>
-<li>Navigate to the root directory (<code>home</code>).  </li>
-<li>Create a new folder for your area with the prefix <code>ins</code>.  </li>
-<li><strong>Example:</strong> For an example area, name it <code>ins_ex</code> (where <code>ex</code> stands for example).  </li>
-</ol>
-<hr />
-<h3 id="step-2-create-an-indexpy-file">Step 2: Create an <code>index.py</code> File</h3>
-<ol>
-<li>Inside the newly created area folder, create an <code>index.py</code> file.  </li>
-<li>Add the following code to the <code>index.py</code> file:  </li>
-</ol>
-<pre><code class="language-python">from flask import Flask, g, Blueprint, abort, render_template
-from ins_kit.ins import ins
-
-area = &quot;ins_ex&quot;  # Replace with your area name
-tmp = f&quot;../{area}/{ins._map.WEB_FOLDER}/{ins._map.TEMPLATES_FOLDER}&quot;
-static = f&quot;../{area}/{ins._map.WEB_FOLDER}&quot;
-
-ins_ex_bp = Blueprint(area, __name__, template_folder=tmp, static_folder=static)
-
-@ins_ex_bp.route('/', defaults={'path': ''}, methods=['GET', 'POST'])
-@ins_ex_bp.route('/&lt;path:path&gt;', methods=['GET', 'POST'])
-def admin(path):
-    return ins._tmp._render(area, path)
-</code></pre>
-<h4 id="notes">Notes:</h4>
-<ul>
-<li>If the area needs to be secured (e.g., an admin panel), replace the last return statement with:<br />
-<code>python
-  return ins._tmp._login(area, path)</code>  </li>
-<li>If the area should be publicly accessible (e.g., a homepage), keep:<br />
-<code>python
-  return ins._tmp._render(area, path)</code></li>
-</ul>
-<hr />
-<h3 id="step-3-add-the-area-to-appjson">Step 3: Add the Area to <code>app.json</code></h3>
-<ol>
-<li>Open the file located at <code>/ins_pros/app.json</code>.  </li>
-<li>Under the <code>"areas"</code> tag, add an entry for your area:  </li>
-</ol>
-<pre><code class="language-json">&quot;ins_ex&quot;: { 
-    &quot;url&quot;: &quot;ins_ex&quot;,
-    &quot;name&quot;: &quot;ins_ex&quot;,
-    &quot;title&quot;: &quot;Ex Area&quot;, 
-    &quot;logo&quot;: &quot;ex.png&quot; 
+<h3 id="fl_data"><code>fl_data</code></h3>
+<p>Use this when you want to manually define the options for a <code>&lt;select&gt;</code> input (instead of pulling from the database).</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-json">&quot;fl_data&quot;: {
+  &quot;value&quot;: &quot;data&quot;,
+  &quot;value_2&quot;: &quot;data_2&quot;
 }
 </code></pre>
-<h4 id="key-points">Key Points:</h4>
-<ul>
-<li><strong>Key and Name and URL:</strong> Should match exactly; these identify the area in the system.  </li>
-<li><strong>Title:</strong> Displayed as the area's title in the UI.  </li>
-<li><strong>Logo:</strong> Path to the logo file for the area.  </li>
-</ul>
+<p>This will create a select box with two options:
+- Option 1: <code>value = "value"</code>, display text = <code>"data"</code>
+- Option 2: <code>value = "value_2"</code>, display text = <code>"data_2"</code></p>
 <hr />
-<h3 id="step-4-register-the-area-in-the-main-file">Step 4: Register the Area in the Main File</h3>
-<ol>
-<li>Open the main file that starts the system.  </li>
-<li>Add the following in the <code>include</code> section:<br />
-<code>python
-   from ins_ex.index import ins_ex_bp</code>  </li>
-<li>Before the <code>app.run</code> method, register the area with a URL prefix:<br />
-<code>python
-   app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex")</code></li>
-</ol>
-<p><strong>The code after adding this two lines should be like this</strong></p>
-<pre><code>    from flask import Flask, request
-    from ins_kit.ins import ins
-    from index import ahome
-    from ins_admin.index import ins_admin_bp
-    from ins_ex.index import ins_ex_bp ##import new area
-    from ajax import ajax_bp
-
-    app = Flask(__name__)
-
-    app.secret_key = 'ins12345'
-    app.config['SESSION_TYPE'] = 'filesystem'
-    @app.before_request
-    def before_request():
-    ins._eng._int(request.path)
-
-    app.register_blueprint(ahome, url_prefix=f"/")
-
-    app.register_blueprint(ins_admin_bp, url_prefix=f"/ins_admin")
-
-    app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex") ##register new area
-
-    app.register_blueprint(ajax_bp, url_prefix=f"/ins_ajax")
-
-    if __name__ == '__main__':
-     app.run(debug=True)
+<h3 id="fl_start"><code>fl_start</code></h3>
+<p>Use this to add a default or placeholder option at the top of the select dropdown.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-json">&quot;fl_start&quot;: &quot;0,\&quot;-\&quot;&quot;
 </code></pre>
+<p>This will add an option at the top of the select:
+- <code>value = 0</code>, display text = <code>"-"</code></p>
+<p>Useful when you're fetching options from the database but still want a “Select…” or blank option first.</p>
 <hr />
-<h3 id="step-5-define-a-ui-template">Step 5: Define a UI Template</h3>
-<ol>
-<li>Access the admin panel:  </li>
-<li>Navigate to <code>Settings -&gt; Database</code>.  </li>
-<li>Open the <code>kit_template</code> table.  </li>
-<li>If you haven’t created a specific template for your new area, you can duplicate an existing one.  </li>
-<li><strong>Example:</strong> Duplicate the <code>ins_admin</code> template row.  </li>
-<li>Replace the <code>tar_area</code> field value with the new area name (<code>ins_ex</code>).  </li>
-<li>Ensure the <code>kit_default</code> field value is set to <code>1</code>.</li>
-</ol>
+<h3 id="fl_where"><code>fl_where</code></h3>
+<p>Use this when the <code>&lt;select&gt;</code> is pulling data from the database and you want to apply a custom <code>WHERE</code> clause to filter the results.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-json">&quot;fl_where&quot;: &quot;`fk_users_id` = '3'&quot;
+</code></pre>
+<p>This will limit the fetched data to entries where <code>fk_users_id</code> equals 3.</p>
 <hr />
-<h3 id="step-6-create-an-app-for-the-area">Step 6: Create an App for the Area</h3>
-<ol>
-<li>Inside the area folder, create a subfolder for apps named <code>ins_apps</code>.  </li>
-<li>Follow the <a href="/Python-framework/app">App Creation Guide</a> to create an app within this folder.  </li>
-</ol>
+<h3 id="list_where"><code>list_where</code></h3>
+<p>Use this in the <strong>page properties</strong> to apply a general <code>WHERE</code> clause for the data shown in the main list view (CRUD table).</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-json">&quot;list_where&quot;: &quot;`status` = 'active'&quot;
+</code></pre>
+<p>Only rows with <code>status = 'active'</code> will be shown in the table.</p>
 <hr />
-<h3 id="step-7-add-a-menu-item">Step 7: Add a Menu Item</h3>
-<ol>
-<li>Refer to the <a href="/Python-framework/menu_item">Menu Item Creation Guide</a> to link the app to the area’s menu.  </li>
-</ol>
+<h3 id="list_query"><code>list_query</code></h3>
+<p>Use this to write your own full SQL query for fetching the list view data. This overrides the default system query.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-json">&quot;list_query&quot;: &quot;SELECT * FROM users WHERE role = 'admin'&quot;
+</code></pre>
+<p>This will replace the default list query and use your custom one instead.</p>
 <hr />
-<h2 id="accessing-the-area">Accessing the Area</h2>
-<ol>
-<li>Enter your area’s name in the URL:  </li>
-<li><strong>Example:</strong> <code>https://insya.ins_ex.com</code>  </li>
-<li>If the area is secured (<code>ins._tmp._login</code>), you must log in to access it.  </li>
-</ol>
-<hr />
-<h2 id="notes_1">Notes:</h2>
-<ul>
-<li><strong>Folder Structure:</strong> Ensure all necessary folders (e.g., <code>ins_apps</code>, <code>ins_web</code>) exist within the area, even if not initially used.  </li>
-<li><strong>Flexibility:</strong> Areas can be structured to include any required part of the framework.</li>
-</ul></div>
+<h3 id="summary-table">Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fl_data</code></td>
+<td>Manually set select input options</td>
+</tr>
+<tr>
+<td><code>fl_start</code></td>
+<td>Add a default/placeholder option at the top</td>
+</tr>
+<tr>
+<td><code>fl_where</code></td>
+<td>Add a custom <code>WHERE</code> clause when fetching select data</td>
+</tr>
+<tr>
+<td><code>list_where</code></td>
+<td>Filter list view data globally</td>
+</tr>
+<tr>
+<td><code>list_query</code></td>
+<td>Override the full SQL query for list data</td>
+</tr>
+</tbody>
+</table></div>
             </div>
         </div>
 
