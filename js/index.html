@@ -121,6 +121,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#using-ajax-with-multiple-classes-in-your-app" class="nav-link">Using AJAX with Multiple Classes in Your App</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -244,7 +248,46 @@
 <ul>
 <li>The <code>data</code> parameter in the callback contains the server’s response.</li>
 <li>Use this response to update the UI, show notifications, or take other actions.</li>
-</ul></div>
+</ul>
+<h2 id="using-ajax-with-multiple-classes-in-your-app">Using AJAX with Multiple Classes in Your App</h2>
+<p>You can use AJAX not only with the main class but also with multiple classes across your app. All you need is to set up a pipeline like the following:</p>
+<hr />
+<h3 id="step-1-create-a-javascript-method-to-trigger-ajax">Step 1: Create a JavaScript Method to Trigger AJAX</h3>
+<p>Define a helper function that takes the class name, method name, data, and a callback:</p>
+<pre><code class="language-javascript">function call(className, method, data, ret) { 
+    data[&quot;get&quot;] = method;
+    data[&quot;class&quot;] = className; 
+    ins(&quot;_call&quot;)._ajax._app(data, ret);
+}
+</code></pre>
+<p>This function allows you to call <strong>any method</strong> in <strong>any class</strong> on your app backend via AJAX.</p>
+<hr />
+<h3 id="step-2-example-usage-of-the-call-function">Step 2: Example Usage of the <code>call()</code> Function</h3>
+<p>Here's how to use the function to call a method inside a specific class:</p>
+<pre><code class="language-javascript">call(&quot;Search&quot;, &quot;_products_ui&quot;, sdata, data =&gt; { 
+    ins(&quot;.-products-area&quot;)._setHTML(data);
+});
+</code></pre>
+<p>This line calls the <code>_products_ui</code> method inside the <code>AppProductsSearch</code> class.</p>
+<hr />
+<h3 id="step-3-python-side-handling-the-ajax-request">Step 3: Python Side – Handling the AJAX Request</h3>
+<p>In your main app class (Python), you need to handle the AJAX request and route it to the desired class and method:</p>
+<pre><code class="language-python">def _call_search(self):
+    q = self.ins._server._post()
+    return eval(f&quot;AppProducts{q['class']}(self.app).{q['get']}()&quot;)
+</code></pre>
+<p>This method dynamically calls the appropriate method from the specified class using the data received from the AJAX request.</p>
+<p>For example:
+If <code>q['class']</code> is <code>"Search"</code> and <code>q['get']</code> is <code>"_products_ui"</code>, the function will execute:</p>
+<pre><code class="language-python">AppProductsSearch(self.app)._products_ui()
+</code></pre>
+<hr />
+<h3 id="final-notes">Final Notes</h3>
+<ul>
+<li>Make sure the class you're calling (<code>AppProductsSearch</code> in this case) is defined and imported properly.</li>
+<li>Use caution when using <code>eval()</code> due to security implications. Only allow safe and verified inputs.</li>
+</ul>
+<hr /></div>
             </div>
         </div>
 

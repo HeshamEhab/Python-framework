@@ -103,8 +103,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#custom-options-in-crud-input-configuration" class="nav-link">Custom Options in CRUD Input Configuration</a>
+            <li class="nav-item" data-bs-level="1"><a href="#custom-options-in-crud-input-configuration" class="nav-link">Custom Options in CRUD Input Configuration</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#fl_data" class="nav-link">fl_data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -112,82 +116,49 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="custom-options-in-crud-input-configuration">Custom Options in CRUD Input Configuration</h2>
+<h1 id="custom-options-in-crud-input-configuration">Custom Options in CRUD Input Configuration</h1>
 <p>This guide explains some helpful options you can use to control how <code>&lt;select&gt;</code> inputs work in your CRUD system.</p>
 <hr />
-<h3 id="fl_data"><code>fl_data</code></h3>
+<h2 id="fl_data"><code>fl_data</code></h2>
 <p>Use this when you want to manually define the options for a <code>&lt;select&gt;</code> input (instead of pulling from the database).</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-json">&quot;fl_data&quot;: {
-  &quot;value&quot;: &quot;data&quot;,
-  &quot;value_2&quot;: &quot;data_2&quot;
+<p><strong>Example:</strong>
+```json
+"fl_data": {
+  "value": "data",
+  "value_2": "data_2"
 }
-</code></pre>
-<p>This will create a select box with two options:
-- Option 1: <code>value = "value"</code>, display text = <code>"data"</code>
-- Option 2: <code>value = "value_2"</code>, display text = <code>"data_2"</code></p>
-<hr />
-<h3 id="fl_start"><code>fl_start</code></h3>
-<p>Use this to add a default or placeholder option at the top of the select dropdown.</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-json">&quot;fl_start&quot;: &quot;0,\&quot;-\&quot;&quot;
-</code></pre>
-<p>This will add an option at the top of the select:
-- <code>value = 0</code>, display text = <code>"-"</code></p>
+This will create a select box with two options:</p>
+<p>Option 1: value = "value", display text = "data"</p>
+<p>Option 2: value = "value_2", display text = "data_2"</p>
+<p>fl_start
+Use this to add a default or placeholder option at the top of the select dropdown.</p>
+<p>Example:</p>
+<p>"fl_start": "0,\"-\""
+This will add an option at the top of the select:</p>
+<p>value = 0, display text = "-"</p>
 <p>Useful when you're fetching options from the database but still want a “Select…” or blank option first.</p>
-<hr />
-<h3 id="fl_where"><code>fl_where</code></h3>
-<p>Use this when the <code>&lt;select&gt;</code> is pulling data from the database and you want to apply a custom <code>WHERE</code> clause to filter the results.</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-json">&quot;fl_where&quot;: &quot;`fk_users_id` = '3'&quot;
-</code></pre>
-<p>This will limit the fetched data to entries where <code>fk_users_id</code> equals 3.</p>
-<hr />
-<h3 id="list_where"><code>list_where</code></h3>
-<p>Use this in the <strong>page properties</strong> to apply a general <code>WHERE</code> clause for the data shown in the main list view (CRUD table).</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-json">&quot;list_where&quot;: &quot;`status` = 'active'&quot;
-</code></pre>
-<p>Only rows with <code>status = 'active'</code> will be shown in the table.</p>
-<hr />
-<h3 id="list_query"><code>list_query</code></h3>
-<p>Use this to write your own full SQL query for fetching the list view data. This overrides the default system query.</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-json">&quot;list_query&quot;: &quot;SELECT * FROM users WHERE role = 'admin'&quot;
-</code></pre>
-<p>This will replace the default list query and use your custom one instead.</p>
-<hr />
-<h3 id="summary-table">Summary Table</h3>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>fl_data</code></td>
-<td>Manually set select input options</td>
-</tr>
-<tr>
-<td><code>fl_start</code></td>
-<td>Add a default/placeholder option at the top</td>
-</tr>
-<tr>
-<td><code>fl_where</code></td>
-<td>Add a custom <code>WHERE</code> clause when fetching select data</td>
-</tr>
-<tr>
-<td><code>list_where</code></td>
-<td>Filter list view data globally</td>
-</tr>
-<tr>
-<td><code>list_query</code></td>
-<td>Override the full SQL query for list data</td>
-</tr>
-</tbody>
-</table></div>
+<p>fl_where
+Use this when the <select> is pulling data from the database and you want to apply a custom WHERE clause to filter the results.</p>
+<p>Example:</p>
+<p>"fl_where": "<code>fk_users_id</code> = '3'"`
+This will limit the fetched data to entries where fk_users_id equals 3.</p>
+<p>list_where
+Use this in the page properties to apply a general WHERE clause for the data shown in the main list view (CRUD table).</p>
+<p>Example:</p>
+<p>"list_where": "<code>status</code> = 'active'"`
+Only rows with status = 'active' will be shown in the table.</p>
+<p>list_query
+Use this to write your own full SQL query for fetching the list view data. This overrides the default system query.</p>
+<p>Example:</p>
+<p>"list_query": "SELECT * FROM users WHERE role = 'admin'"
+This will replace the default list query and use your custom one instead.</p>
+<p>Summary Table
+Option  Purpose
+fl_data Manually set select input options
+fl_start    Add a default/placeholder option at the top
+fl_where    Add a custom WHERE clause when fetching select data
+list_where  Filter list view data globally
+list_query  Override the full SQL query for list data</p></div>
             </div>
         </div>
 

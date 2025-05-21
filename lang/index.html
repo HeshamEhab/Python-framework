@@ -117,6 +117,15 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#head" class="nav-link">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#using-translation-in-javascript" class="nav-link">Using Translation in JavaScript</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#conclusion" class="nav-link">Conclusion</a>
               <ul class="nav flex-column">
               </ul>
@@ -220,6 +229,85 @@
 </code></pre>
 <p>Setting <code>True</code> as the last parameter ensures translations are included in the response.</p>
 <hr />
+<h1 id="head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h1>
+<h2 id="using-translation-in-javascript">Using Translation in JavaScript</h2>
+<p>To translate any word or key in a JavaScript file, use the following function:</p>
+<pre><code class="language-javascript">ins(&quot;text_in_json&quot;)._data._trans((returned_text) =&gt; { 
+    ins(returned_text)._ui._notification();
+});
+</code></pre>
+<hr />
+<h3 id="how-it-works">How It Works</h3>
+<ul>
+<li>You pass a key (e.g. <code>"text_in_json"</code>) into <code>ins()</code> — this key should match one defined in your translation JSON files.</li>
+<li>The system looks up the translation, and returns the translated string through the <code>returned_text</code> variable.</li>
+<li>You can then use <code>returned_text</code> wherever you want (e.g. showing a notification, updating UI text, etc).</li>
+</ul>
+<hr />
+<h3 id="example-translation-entry">Example Translation Entry</h3>
+<p>Inside your translation JSON file, add an entry like this:</p>
+<pre><code class="language-json">&quot;text_in_json&quot;: &quot;Text In Json&quot;
+</code></pre>
+<p>When <code>ins("text_in_json")._data._trans(...)</code> is called, it will resolve to <code>"Text In Json"</code>.</p>
+<hr />
+<h3 id="translation-files-location">Translation Files Location</h3>
+<p>All translation files are located at:</p>
+<pre><code>ins_web/ins_langs/
+</code></pre>
+<ul>
+<li>Inside this directory, you will find a <strong>folder for each language</strong>.</li>
+<li>Inside each language folder, you will find a <code>gen.json</code> file which contains the translation keys and values.</li>
+</ul>
+<p>Example structure:</p>
+<pre><code>ins_web/
+└── ins_langs/
+    ├── en/
+    │   └── gen.json
+    ├── ar/
+    │   └── gen.json
+    └── fr/
+        └── gen.json
+</code></pre>
+<p>Make sure your key (e.g. <code>"text_in_json"</code>) exists in the correct language file.</p>
+<hr />
+<h3 id="summary">🧾 Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text_in_json</code></td>
+<td>Key to translate</td>
+</tr>
+<tr>
+<td><code>gen.json</code></td>
+<td>Translation source file</td>
+</tr>
+<tr>
+<td><code>returned_text</code></td>
+<td>The actual translated value from the JSON</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>370d928 (Initial MkDocs site)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h2 id="conclusion">Conclusion</h2>
 <p>The system provides a flexible translation mechanism with four levels:
 - <strong>System-wide translations</strong> for common terms.
