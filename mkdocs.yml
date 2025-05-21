@@ -1,0 +1,14 @@
+site_name: Insya Python Framework
+
+nav:
+  - Home: index.md
+  - Architecture: structure.md
+  - App: app.md
+  - Widget: widget.md
+  - Menu Item: menu_item.md
+  - CRUD: crud.md
+  - Database: db.md
+  - JS: js.md  
+  - Area: area.md
+  - Languages: lang.md
+  - Other : other.md

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Area - Insya Python Framework</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Insya Python Framework</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../structure/" class="nav-link">Architecture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../app/" class="nav-link">App</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../widget/" class="nav-link">Widget</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../menu_item/" class="nav-link">Menu Item</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../crud/" class="nav-link">CRUD</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../db/" class="nav-link">Database</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Area</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../lang/" class="nav-link">Languages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../other/" class="nav-link">Other</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../js/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../lang/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#creating-and-configuring-an-area" class="nav-link">Creating and Configuring an Area</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#what-is-an-area" class="nav-link">What is an Area?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#how-to-create-a-new-area" class="nav-link">How to Create a New Area</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#accessing-the-area" class="nav-link">Accessing the Area</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#notes_1" class="nav-link">Notes:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="creating-and-configuring-an-area">Creating and Configuring an Area</h1>
+<h2 id="what-is-an-area">What is an Area?</h2>
+<p>An <strong>area</strong> is like a mini-website inside the framework. It has its own structure and components, including apps, widgets, and web files. Think of it as a separate section of your system that can function independently, while still being part of the larger framework.</p>
+<p>For example, if your framework is a big house, each area is like a room with its own purpose and design. You can create as many areas as you need, and each can include folders like <code>ins_apps</code>, <code>ins_wdgts</code>, <code>ins_web</code>, and other necessary files to operate as its own mini-website.</p>
+<hr />
+<h2 id="how-to-create-a-new-area">How to Create a New Area</h2>
+<h3 id="step-1-create-the-area-folder">Step 1: Create the Area Folder</h3>
+<ol>
+<li>Navigate to the root directory (<code>home</code>).  </li>
+<li>Create a new folder for your area with the prefix <code>ins</code>.  </li>
+<li><strong>Example:</strong> For an example area, name it <code>ins_ex</code> (where <code>ex</code> stands for example).  </li>
+</ol>
+<hr />
+<h3 id="step-2-create-an-indexpy-file">Step 2: Create an <code>index.py</code> File</h3>
+<ol>
+<li>Inside the newly created area folder, create an <code>index.py</code> file.  </li>
+<li>Add the following code to the <code>index.py</code> file:  </li>
+</ol>
+<pre><code class="language-python">from flask import Flask, g, Blueprint, abort, render_template
+from ins_kit.ins import ins
+
+area = &quot;ins_ex&quot;  # Replace with your area name
+tmp = f&quot;../{area}/{ins._map.WEB_FOLDER}/{ins._map.TEMPLATES_FOLDER}&quot;
+static = f&quot;../{area}/{ins._map.WEB_FOLDER}&quot;
+
+ins_ex_bp = Blueprint(area, __name__, template_folder=tmp, static_folder=static)
+
+@ins_ex_bp.route('/', defaults={'path': ''}, methods=['GET', 'POST'])
+@ins_ex_bp.route('/&lt;path:path&gt;', methods=['GET', 'POST'])
+def admin(path):
+    return ins._tmp._render(area, path)
+</code></pre>
+<h4 id="notes">Notes:</h4>
+<ul>
+<li>If the area needs to be secured (e.g., an admin panel), replace the last return statement with:<br />
+<code>python
+  return ins._tmp._login(area, path)</code>  </li>
+<li>If the area should be publicly accessible (e.g., a homepage), keep:<br />
+<code>python
+  return ins._tmp._render(area, path)</code></li>
+</ul>
+<hr />
+<h3 id="step-3-add-the-area-to-appjson">Step 3: Add the Area to <code>app.json</code></h3>
+<ol>
+<li>Open the file located at <code>/ins_pros/app.json</code>.  </li>
+<li>Under the <code>"areas"</code> tag, add an entry for your area:  </li>
+</ol>
+<pre><code class="language-json">&quot;ins_ex&quot;: { 
+    &quot;url&quot;: &quot;ins_ex&quot;,
+    &quot;name&quot;: &quot;ins_ex&quot;,
+    &quot;title&quot;: &quot;Ex Area&quot;, 
+    &quot;logo&quot;: &quot;ex.png&quot; 
+}
+</code></pre>
+<h4 id="key-points">Key Points:</h4>
+<ul>
+<li><strong>Key and Name and URL:</strong> Should match exactly; these identify the area in the system.  </li>
+<li><strong>Title:</strong> Displayed as the area's title in the UI.  </li>
+<li><strong>Logo:</strong> Path to the logo file for the area.  </li>
+</ul>
+<hr />
+<h3 id="step-4-register-the-area-in-the-main-file">Step 4: Register the Area in the Main File</h3>
+<ol>
+<li>Open the main file that starts the system.  </li>
+<li>Add the following in the <code>include</code> section:<br />
+<code>python
+   from ins_ex.index import ins_ex_bp</code>  </li>
+<li>Before the <code>app.run</code> method, register the area with a URL prefix:<br />
+<code>python
+   app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex")</code></li>
+</ol>
+<p><strong>The code after adding this two lines should be like this</strong></p>
+<pre><code>    from flask import Flask, request
+    from ins_kit.ins import ins
+    from index import ahome
+    from ins_admin.index import ins_admin_bp
+    from ins_ex.index import ins_ex_bp ##import new area
+    from ajax import ajax_bp
+
+    app = Flask(__name__)
+
+    app.secret_key = 'ins12345'
+    app.config['SESSION_TYPE'] = 'filesystem'
+    @app.before_request
+    def before_request():
+    ins._eng._int(request.path)
+
+    app.register_blueprint(ahome, url_prefix=f"/")
+
+    app.register_blueprint(ins_admin_bp, url_prefix=f"/ins_admin")
+
+    app.register_blueprint(ins_ex_bp, url_prefix=f"/ins_ex") ##register new area
+
+    app.register_blueprint(ajax_bp, url_prefix=f"/ins_ajax")
+
+    if __name__ == '__main__':
+     app.run(debug=True)
+</code></pre>
+<hr />
+<h3 id="step-5-define-a-ui-template">Step 5: Define a UI Template</h3>
+<ol>
+<li>Access the admin panel:  </li>
+<li>Navigate to <code>Settings -&gt; Database</code>.  </li>
+<li>Open the <code>kit_template</code> table.  </li>
+<li>If you haven’t created a specific template for your new area, you can duplicate an existing one.  </li>
+<li><strong>Example:</strong> Duplicate the <code>ins_admin</code> template row.  </li>
+<li>Replace the <code>tar_area</code> field value with the new area name (<code>ins_ex</code>).  </li>
+<li>Ensure the <code>kit_default</code> field value is set to <code>1</code>.</li>
+</ol>
+<hr />
+<h3 id="step-6-create-an-app-for-the-area">Step 6: Create an App for the Area</h3>
+<ol>
+<li>Inside the area folder, create a subfolder for apps named <code>ins_apps</code>.  </li>
+<li>Follow the <a href="/Python-framework/app">App Creation Guide</a> to create an app within this folder.  </li>
+</ol>
+<hr />
+<h3 id="step-7-add-a-menu-item">Step 7: Add a Menu Item</h3>
+<ol>
+<li>Refer to the <a href="/Python-framework/menu_item">Menu Item Creation Guide</a> to link the app to the area’s menu.  </li>
+</ol>
+<hr />
+<h2 id="accessing-the-area">Accessing the Area</h2>
+<ol>
+<li>Enter your area’s name in the URL:  </li>
+<li><strong>Example:</strong> <code>https://insya.ins_ex.com</code>  </li>
+<li>If the area is secured (<code>ins._tmp._login</code>), you must log in to access it.  </li>
+</ol>
+<hr />
+<h2 id="notes_1">Notes:</h2>
+<ul>
+<li><strong>Folder Structure:</strong> Ensure all necessary folders (e.g., <code>ins_apps</code>, <code>ins_web</code>) exist within the area, even if not initially used.  </li>
+<li><strong>Flexibility:</strong> Areas can be structured to include any required part of the framework.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Database - Insya Python Framework</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Insya Python Framework</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../structure/" class="nav-link">Architecture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../app/" class="nav-link">App</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../widget/" class="nav-link">Widget</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../menu_item/" class="nav-link">Menu Item</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../crud/" class="nav-link">CRUD</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Database</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../area/" class="nav-link">Area</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../lang/" class="nav-link">Languages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../other/" class="nav-link">Other</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../crud/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../js/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#database-management-from-admin-panel" class="nav-link">Database Management from Admin Panel</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="database-management-from-admin-panel">Database Management from Admin Panel</h2>
+<p>You can manage all database operations from the <strong>admin panel</strong>. From the <strong>admin side panel</strong>, click on <strong>Settings</strong> and then click on <strong>Database</strong>. You can:</p>
+<ul>
+<li>Insert tables or rows</li>
+<li>Edit table structures or individual rows</li>
+<li>View table data</li>
+<li>Remove tables or rows</li>
+</ul>
+<hr />
+<h3 id="1-managing-tables">1. Managing Tables</h3>
+<h4 id="how-to-add-a-new-table">How to Add a New Table</h4>
+<ol>
+<li>Click on the <strong>(+ Add Table)</strong> button.</li>
+<li>The SQL area will be filled with the following default SQL structure:</li>
+</ol>
+<pre><code class="language-sql">CREATE TABLE `$table_name` (
+ `id` int(11) NOT NULL,
+ `title` varchar(255) NOT NULL,
+ `des` text DEFAULT NULL,
+ `kit_deleted` tinyint(4) NOT NULL DEFAULT 0,
+ `kit_disabled` tinyint(4) NOT NULL DEFAULT 0,
+ `kit_modified` datetime NOT NULL,
+ `kit_created` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `$table_name` ADD PRIMARY KEY (`id`);
+ALTER TABLE `$table_name` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT; 
+COMMIT;
+</code></pre>
+<ol>
+<li>Replace the variable <code>$table_name</code> with your table name. Be careful! You need to replace it <strong>in three places</strong>.</li>
+<li>Auto-generated fields like these <strong>must always be included</strong> in your table:</li>
+<li><code>id</code></li>
+<li><code>kit_deleted</code></li>
+<li><code>kit_disabled</code></li>
+<li><code>kit_modified</code></li>
+<li><code>kit_created</code></li>
+</ol>
+<blockquote>
+<p>Other fields can be edited or removed based on your requirements.</p>
+</blockquote>
+<ol>
+<li>You can learn more about MySQL database field types <a href="#">here</a>.</li>
+<li>After completing your SQL, click on the <strong>(Run)</strong> button to create the table.</li>
+<li>The newly created table will appear at the <strong>top of the table list</strong>.</li>
+</ol>
+<hr />
+<h4 id="how-to-update-table-structure">How to Update Table Structure</h4>
+<ol>
+<li>To update a table structure, click on the <i class="fas fa-cog" style='color:blue;'></i> in the table row.</li>
+<li>This will take you to a page displaying all fields and their types as rows.</li>
+<li>You can:</li>
+<li><strong>Edit</strong> existing fields.</li>
+<li>
+<p><strong>Add a new field</strong> by clicking on the <strong>(+ Add Field)</strong> button.</p>
+</li>
+<li>
+<p>When adding a new field:</p>
+</li>
+<li>The SQL area will automatically be filled with SQL for adding a field.</li>
+<li>Replace the variable <code>$column_name</code> with your field name.</li>
+<li>Change the field type if necessary (default is <code>varchar(255)</code>).</li>
+</ol>
+<p>Example SQL:
+   <code>sql
+   ALTER TABLE `your_table_name` ADD `$column_name` varchar(255);</code></p>
+<ol>
+<li>Click on the <strong>(Run)</strong> button, and the new field will appear in the field list.</li>
+</ol>
+<iframe src="https://drive.google.com/file/d/1FeABIfZbJIwOe-fwMgcOZ73z7zq4VC9q/preview" width="640" height="480" allow="autoplay"></iframe>
+
+<hr />
+<h3 id="2-managing-table-data">2. Managing Table Data</h3>
+<p>To access the data inside a table:</p>
+<ol>
+<li>Click on the <i class="fa-solid fa-arrow-right" style='color:blue;'></i> in the table row.</li>
+<li>This will lead you to the <strong>data view</strong> for that table.</li>
+</ol>
+<p>Each row represents a record in the table. You can:</p>
+<h4 id="add-a-new-row">Add a New Row</h4>
+<ol>
+<li>Click on the <strong>(+ Insert)</strong> button.</li>
+<li>The SQL area will be filled with SQL for inserting a row:</li>
+</ol>
+<p><code>sql
+   INSERT INTO `your_table_name` (`field1`, `field2`, ...) VALUES ('$field1_val', '$field2_val', ...);</code></p>
+<ol>
+<li>Replace the variables with the values you want to insert:</li>
+<li><code>id</code> is <strong>auto-incremented</strong>.</li>
+<li><code>kit_deleted</code> and <code>kit_disabled</code> are <strong>0 by default</strong>.</li>
+<li><code>kit_created</code> and <code>kit_modified</code> default to the <strong>current date and time</strong>.</li>
+</ol>
+<p>Example:
+   <code>sql
+   INSERT INTO `my_table` (`title`, `des`) VALUES ('My Title', 'Some Description');</code></p>
+<ol>
+<li>Click on the <strong>(Run)</strong> button to add the record.</li>
+</ol>
+<hr />
+<h4 id="update-or-delete-a-row">Update or Delete a Row</h4>
+<ul>
+<li><strong>Edit</strong>: Click on the <i class='fas fa-pen' style='color:blue;'></i>  next to the record. The SQL area will be filled with an <code>UPDATE</code> statement:
+   <code>sql
+   UPDATE `your_table_name` SET `field_name` = 'new_value' WHERE `id` = record_id;</code></li>
+<li><strong>Delete</strong>: Click on the <i class='fas fa-close' style='color:red;'></i>  to delete the record.</li>
+</ul>
+<iframe src="https://drive.google.com/file/d/1P68vgjK7ErOWgkfVzKbue9x9JJAYQvnI/preview" width="640" height="480" allow="autoplay"></iframe>
+
+<hr />
+<h3 id="3-table-actions">3. Table Actions</h3>
+<p>In the table list, you will find additional actions:</p>
+<ol>
+<li><strong>Empty Table</strong>: Click on the  <i class='fas fa-crop' style='color:red;' style='color:red;'></i>   to <strong>clear all data</strong> in the table without removing its structure.</li>
+<li><strong>Delete Table</strong>: Click on the <i class='fas fa-close' style='color:red;'></i>  to remove the table completely.</li>
+</ol>
+<hr />
+<h3 id="summary">Summary</h3>
+<p>With the admin panel's database tools, you can easily:</p>
+<ul>
+<li>Create tables and define their structure.</li>
+<li>Add, edit, or delete fields.</li>
+<li>Insert, update, or delete records.</li>
+<li>Manage tables without writing complex SQL manually.</li>
+</ul>
+<p>These features ensure efficient management of your application's database while minimizing the risk of errors.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
